@@ -1,0 +1,91 @@
+import openpyxl
+from openpyxl import Workbook
+from Tools.demo.spreadsheet import Sheet
+
+'''f = open("C:/Users/VISVVENU/Downloads/Billing_Process/AWR/awrrpt_1_5312_5313.txt", "r+")
+string1 = 'Block changes'
+s = ""
+count = 1
+s = f.readlines()
+for i in s:
+    l2 = i.split()
+    if string1 in l2:
+        print("line number is ", count, ":", i)
+    count += 1'''
+from _operator import countOf
+
+'''if flag == 0:
+    print('String', string1, 'Not Found')
+else:
+    print(line)
+    
+
+
+book = Workbook()
+sheet = book.active
+
+book.save("C:/Users/VISVVENU/Downloads/Billing_Process/sample.xlsx")
+
+fh = open("C:\\Users\\VISVVENU\\Downloads\\CloudScripts\\cloudScripts\\TempWorkDir\\awr_rac_19102_19103.html", "r+");
+word = """gc cr block busy"""
+word1 = """physical read total IO requests"""
+word2 = """physical write total IO requests"""
+word3 = """physical read bytes"""
+word4 = """physical write bytes"""
+word5 = """bytes received via SQL*Net from client"""
+word6 = """bytes sent"""
+word7 = """SQL*Net roundtrips to/from client"""
+word8 = """table fetch continued row"""
+word9 = """redo size"""
+word10 = """single block physical read"""
+wordZ = "Top Timed Foreground Events"
+s = """"""
+count = 1
+s = fh.readlines()
+
+for i in s:
+    if word in i:
+        l1 = i.split()
+        print("gc cr block busy : " + l1[8])
+    count += 1
+    if word1 in i:
+        l2 = i.split()
+        print("physical read total IO requests : " + l2[5])
+    count += 1
+    if word2 in i:
+        l3 = i.split()
+        print("physical write total IO requests : " + l3[5])
+        print("physical Read+Write total IO requests : " + l2[6] + l3[6])
+    count += 1
+    if word3 in i:
+        l4 = i.split()
+        print("physical read bytes : " + l4[3])
+    count += 1
+    if word4 in i:
+        l5 = i.split()
+        print("physical write bytes : " + l5[3])
+    count += 1
+    if word5 in i:
+        l6 = i.split()
+        print("bytes received via SQL*Net from client : " + l6[6])
+    if word6 in i:
+        l7 = i.split()
+        print("bytes Sent via SQL*Net from client : " + l7[6])
+    if word7 in i:
+        l8 = i.split()
+        print("SQL*Net roundtrips to/from client: " + l8[4])
+    if word8 in i:
+        l9 = i.split()
+        print("table fetch continued row: " + l9[4])
+
+s1 = s[150:173]
+s2 = s[1100:1143]
+for i in s2:
+    if word9 in i:
+        l10 = i.split()
+        print("redo size : " + l10[2])
+for i in s1:
+    if word10 in i:
+        l11 = i.split()
+        print("single block physical read : " + l11[10])
+
