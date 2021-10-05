@@ -1,0 +1,99 @@
+import shutil
+import os
+import time
+import openpyxl
+
+path = "C:\\Users\\VISVVENU\\\Downloads\\svn_logs\\Properties.xlsx"
+wb_obj = openpyxl.load_workbook(path)
+sheet_obj = wb_obj.active
+cell_obj1 = sheet_obj.cell(row=1, column=2)
+cell_obj2 = sheet_obj.cell(row=2, column=2)
+cell_obj3 = sheet_obj.cell(row=3, column=2)
+a = cell_obj1.value
+b = cell_obj2.value
+c = cell_obj3.value
+
+dir = "svn"
+dir1 = "awr_reports"
+dir2 = "db_details"
+dir3 = "gc_logs"
+dir4 = "Kibana_cpu_memory"
+dir5 = "Logs"
+dir6 = "network"
+path = os.path.join(a, dir1)
+os.mkdir(path)
+path = os.path.join(a, dir2)
+os.mkdir(path)
+path = os.path.join(a, dir3)
+os.mkdir(path)
+path = os.path.join(a, dir4)
+os.mkdir(path)
+path = os.path.join(a, dir5)
+os.mkdir(path)
+path = os.path.join(a, dir6)
+os.mkdir(path)
+
+
+dest_dir1 = f'{c}\\awr_reports'
+dest_dir2 = f'{c}\\db_details'
+dest_dir3 = f'{c}\\gc_logs'
+dest_dir4 = f'{c}\\cpu_memory'
+dest_dir5 = f'{c}\\Logs'
+dest_dir6 = f'{c}\\network'
+
+files = os.listdir(b)
+
+for root, dirs, files in os.walk(b):
+    for file in files:
+        if file.__contains__('awr'):
+            shutil.copy(os.path.join(root, file), os.path.join(dest_dir1, file))
+    next
+next
+
+for root, dirs, files in os.walk(b):
+    for file in files:
+        if file.__contains__('db'):
+            shutil.copy(os.path.join(root, file), os.path.join(dest_dir2, file))
+    next
+next
+
+for root, dirs, files in os.walk(b):
+    for file in files:
+        if file.__contains__('gc'):
+            shutil.copy(os.path.join(root, file), os.path.join(dest_dir3, file))
+    next
+next
+
+for root, dirs, files in os.walk(b):
+    for file in files:
+        if file.__contains__('memory') or file.__contains__('all_mod_temp'):
+            shutil.copy(os.path.join(root, file), os.path.join(dest_dir4, file))
+    next
+next
+
+for root, dirs, files in os.walk(b):
+    for file in files:
+        if file.__contains__('connection') or file.__contains__('deadline') or file.__contains__(
+                'hibernate') or file.__contains__('node_average') or file.__contains__('events') or file.__contains__(
+            'misc') or file.__contains__('queue') or file.__contains__('exhaust') or file.__contains__(
+            'stuck_thread') or file.__contains__('log_Pattern') or file.__contains__('NodeUtil'):
+            shutil.copy(os.path.join(root, file), os.path.join(dest_dir5, file))
+    next
+next
+
+for root, dirs, files in os.walk(b):
+    for file in files:
+        if file.__contains__('network'):
+            shutil.copy(os.path.join(root, file), os.path.join(dest_dir6, file))
+    next
+next
+
+for root, dirs, files in os.walk(b):
+    for file in files:
+        if file.__contains__('netstat') or file.__contains__('pod_details') or file.__contains__(
+                'container') or file.__contains__('final') or file.__contains__('EXPLAIN_PLANS'):
+            shutil.copy(os.path.join(root, file), os.path.join(a, file))
+    next
+next
+
+
