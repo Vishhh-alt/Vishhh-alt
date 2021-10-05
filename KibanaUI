@@ -1,0 +1,155 @@
+import os
+import pyautogui as pa
+import subprocess as sp
+import time
+import webbrowser
+import cv2
+import xlsxwriter as xls
+import datetime
+
+date1 = datetime.datetime.now()
+print(date1)
+Sheet_name = input("Please enter the Sheet name")
+from1 = input("Enter From date : \n")
+To1 = input("Enter To date : \n")
+
+
+def raw_data():
+    webbrowser.open(raw_data, new=0)
+    generic()
+
+
+def st_business_avg_cpu_memory():
+    time.sleep(2)
+    webbrowser.open(st_business_avg_cpu_memory, new=2)
+    generic()
+
+
+def avg_node_util():
+    pa.sleep(2)
+    webbrowser.open(avg_node_util, new=2)
+    generic()
+
+
+def node_util_graph():
+    pa.sleep(3)
+    webbrowser.open(node_util_graph, new=2)
+    img = pa.locateCenterOnScreen("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/timestamp.PNG",
+                                  confidence=.9)
+    while img == None:
+        img = pa.locateCenterOnScreen("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/timestamp.PNG",
+                                      confidence=.9)
+    pa.screenshot("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/NodeUtil.PNG")
+
+
+def edge_network_bytes_graph():
+    pa.sleep(7)
+    webbrowser.open(edge_network_bytes_graph, new=2)
+
+    img1 = pa.locateCenterOnScreen("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/timestamp.PNG",
+                                   confidence=.9)
+    while img1 == None:
+        img1 = pa.locateCenterOnScreen("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/timestamp.PNG",
+                                       confidence=.9)
+    pa.screenshot("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/edge_network_bytes_graph.PNG")
+
+
+'''
+    pa.click(1784, 301)
+    pa.press("Down", presses=4, _pause=0.25)
+    pa.press("enter")
+    pa.sleep(3)
+    pa.click(1784, 301)
+    pa.press("Down", presses=4, _pause=0.25)
+    pa.sleep(3)
+    pa.press("enter")
+    
+    img1 = pa.locateCenterOnScreen("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/timestamp.PNG",
+                                  confidence=.9)
+    while img1 == None:
+        img1 = pa.locateCenterOnScreen("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/timestamp.PNG",
+                                      confidence=.9)
+    pa.screenshot("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/edge_network_bytes_graph.PNG")
+    '''
+
+
+def network_bytes_raw_data():
+    pa.sleep(3)
+    webbrowser.open(network_bytes_raw_data, new=2)
+    generic()
+
+
+def log_pattern():
+    pa.sleep(2)
+    webbrowser.open(log_pattern, new=2)
+    img2 = pa.locateCenterOnScreen("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/log.PNG",
+                                  confidence=.9)
+    while img2 == None:
+        img2 = pa.locateCenterOnScreen("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/log.PNG",
+                                      confidence=.9)
+    pa.screenshot("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/log_Pattern.PNG")
+
+
+def Edge_Ingress():
+    webbrowser.open(edge_Ingress, new=2)
+    pa.click(477, 384)
+    pa.sleep(20)
+    pa.screenshot("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/Cpu_Edge.PNG")
+
+
+def response_distribution_count_replica_level():
+    webbrowser.open(resp1, new=2)
+    generic()
+
+
+def response_distribution_count_pod_level():
+    webbrowser.open(resp2, new=2)
+    generic()
+
+
+def mt_shared_envoy():
+    webbrowser.open(mt, new=2)
+    pa.sleep(20)
+    pa.screenshot("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/mt_shared_envoy.PNG")
+
+
+def generic():
+    pa.sleep(2)
+
+    image = pa.locateCenterOnScreen("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/Formatted.PNG",
+                                    confidence=.9)
+    while image == None:
+        image = pa.locateCenterOnScreen("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/Formatted.PNG",
+                                        confidence=.9)
+    e, f = pa.locateCenterOnScreen("C:/Users/VISVVENU/PycharmProjects/pythonProject1/Fire/Formatted.PNG",confidence=.9)
+    pa.click(e, f)
+
+
+
+'''
+        sp.Popen(path1)
+        pa.sleep(3)
+        pa.hotkey("ctrl", "n")
+        pa.sleep(3)
+        pa.write("Raw_Data_All\n")
+        pa.typewrite(f"No Data Found for Raw_Data_All")
+        pa.sleep(3)
+        pa.hotkey("alt", "tab")
+        '''
+
+raw_data()
+st_business_avg_cpu_memory()
+avg_node_util()
+node_util_graph()
+network_bytes_raw_data()
+edge_network_bytes_graph()
+log_pattern()
+Edge_Ingress()
+response_distribution_count_replica_level()
+response_distribution_count_pod_level()
+mt_shared_envoy()
+date2 = datetime.datetime.now()
+print(date2)
+diff = date2 - date1
+print("Difference: ", diff)
+pa.alert("Completed")
