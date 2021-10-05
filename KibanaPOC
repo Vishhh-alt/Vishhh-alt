@@ -1,0 +1,144 @@
+#!/usr/bin/env python3
+##Generate Kibana Reports (from any environment on the fly) in few seconds with the help of shell scripting and Curl Commands##
+
+import os
+import stat
+import sys
+import subprocess as sp
+import time
+import re
+
+username1 = input("Username Please")
+Password1 = input("Password Please")
+env1 = input("Pls type the environment name :\n")
+var1 = input("From date")
+var2 = input("To date")
+fh1 = open("C:\\KibanaReports\\kibana3.txt", "r")
+fh2 = open("C:\\KibanaReports\\kibanaa.sh", "w")
+time.sleep(8)
+s = fh1.readlines()
+c = 1
+for i in s:
+    # print(i)
+    p = '(2021-\d*-\d+[A-Z]\d*:\d*:\d*.\d*[A-Z])'
+    username = 'username'
+    password = 'Password'
+    env2 = 'tenant'
+    u = re.findall(username,i)
+    p1 = re.findall(password, i)
+    env3 = re.findall(env2, i)
+    a = re.findall(p, i)
+    # print(a[0])
+    i1 = i.replace('tenant',env1).replace(a[0], var1).replace(a[1], var2).replace(u[0],username1).replace(p1[0],Password1)
+    fh2.write(i1)
+    c += 1
+fh2.close()
+a1 = "C:\\KibanaReports\\kibanaa.sh"
+a = sp.call(['sh', 'C:/KibanaReports/./kibanaa.sh'])
+f1 = open("C:/KibanaReports/gc1.txt")
+f2 = open("C:/KibanaReports/events.txt")
+f3 = open("C:/KibanaReports/hibernate.txt")
+f4 = open("C:/KibanaReports/queue.txt")
+f5 = open("C:/KibanaReports/resource_exhaust.txt")
+f6 = open("C:/KibanaReports/connectionpool.txt")
+f7 = open("C:/KibanaReports/stuckthread.txt")
+f8 = open("C:/KibanaReports/deadline.txt")
+f9 = open("C:/KibanaReports/miscerror.txt")
+f10 = open("C:/KibanaReports/envoy.txt")
+f11 = open("C:/KibanaReports/error_ManagedChannelImpl.txt")
+path = f1.read().split('\"')
+str2 = path[3]
+str1 = f"curl -u {username1}:{Password1} -k --socks5-hostname localhost:5555 https://msp-master.cne-installer.oraclecne:30601"
+str3 = str1 + str2
+str4 = "\t --output C:/KibanaReports/perf_idc_ugbu_perf_namespace_gc.csv"
+str5 = str3 + str4
+f1.close()
+#print(str5)
+f = open("C:/KibanaReports/myfile.sh", "x")
+f.write(str5 + "\n")
+path = f2.read().split('\"')
+str2 = path[3]
+str3 = str1 + str2
+str4 = "\t --output C:/KibanaReports/perf_idc_ugbu_events.csv"
+str5 = str3 + str4
+f2.close()
+f = open("C:/KibanaReports/myfile.sh", "a")
+f.write(str5 + "\n")
+path = f3.read().split('\"')
+str2 = path[3]
+str3 = str1 + str2
+str4 = "\t --output C:/KibanaReports/perf_idc_ugbu_epr_hibernate_session.csv"
+str5 = str3 + str4
+f3.close()
+f = open("C:/KibanaReports/myfile.sh", "a")
+f.write(str5 + "\n")
+path = f4.read().split('\"')
+str2 = path[3]
+str3 = str1 + str2
+str4 = "\t --output C:/KibanaReports/perf_idc_ugbu_queue_full.csv"
+str5 = str3 + str4
+f4.close()
+f = open("C:/KibanaReports/myfile.sh", "a")
+f.write(str5 + "\n")
+path = f5.read().split('\"')
+str2 = path[3]
+str3 = str1 + str2
+str4 = "\t --output C:/KibanaReports/perf_idc_ugbu_resource_exhaust.csv"
+str5 = str3 + str4
+f5.close()
+f = open("C:/KibanaReports/myfile.sh", "a")
+f.write(str5 + "\n")
+path = f6.read().split('\"')
+str2 = path[3]
+str3 = str1 + str2
+str4 = "\t --output C:/KibanaReports/perf_idc_ugbu_connection_pool.csv"
+str5 = str3 + str4
+f6.close()
+f = open("C:/KibanaReports/myfile.sh", "a")
+f.write(str5 + "\n")
+path = f7.read().split('\"')
+str2 = path[3]
+str3 = str1 + str2
+str4 = "\t --output C:/KibanaReports/perf_idc_ugbu_stuck_thread.csv"
+str5 = str3 + str4
+f7.close()
+f = open("C:/KibanaReports/myfile.sh", "a")
+f.write(str5 + "\n")
+path = f8.read().split('\"')
+str2 = path[3]
+str3 = str1 + str2
+str4 = "\t --output C:/KibanaReports/perf_idc_ugbu_deadline_exceeded.csv"
+str5 = str3 + str4
+f8.close()
+f = open("C:/KibanaReports/myfile.sh", "a")
+f.write(str5 + "\n")
+path = f9.read().split('\"')
+str2 = path[3]
+str3 = str1 + str2
+str4 = "\t --output C:/KibanaReports/perf_idc_ugbu_misc_error.csv"
+str5 = str3 + str4
+f9.close()
+f = open("C:/KibanaReports/myfile.sh", "a")
+f.write(str5 + "\n")
+path = f10.read().split('\"')
+str2 = path[3]
+str3 = str1 + str2
+str4 = "\t --output C:/KibanaReports/perf_idc_ugbu_perf_namespace_envoy.csv"
+str5 = str3 + str4
+f10.close()
+f = open("C:/KibanaReports/myfile.sh", "a")
+f.write(str5 + "\n")
+path = f11.read().split('\"')
+str2 = path[3]
+str3 = str1 + str2
+str4 = "\t --output C:/KibanaReports/error_ManagedChannelImpl.csv"
+str5 = str3 + str4
+f11.close()
+f = open("C:/KibanaReports/myfile.sh", "a")
+f.write(str5)
+f.close()
+time.sleep(3)
+b = sp.call(['sh', 'C:/KibanaReports/./myfile.sh'])
+b1 = "C:\\KibanaReports\\myfile.sh"
+os.remove(a1)
+os.remove(b1)
