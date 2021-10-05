@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+##Scrub some portions of AWR by providing the path of 'n' files.
+
+import time
+import os
+
+path1 = input("Enter the Folder Path\n")
+count3 = 1
+global l1, l2, l3, l4
+try:
+    for file in os.listdir(path1):
+
+        if file.__contains__("html"):
+            fh = open(path1 + "\\" + file, "r+");
+            count = 1
+            s = fh.readlines()
+            fh.close()
+            word1 = "WORKLOAD REPOSITORY"
+            word2 = "Main Report"
+            word3 = "Activity Over Time"
+            word4 = "End of Report"
+            fh1 = open(path1 + "\\" + file, "w");
+            for i in s:
+
+                if word1 in i:
+                    l1 = count
+
+                if word2 in i:
+                    l2 = count
+                    s1 = s[l1 + 2:l2 - 2]
+                    del s[l1 - 1:l2 - 2]
+
+                if word3 in i:
+                    l3 = count
+                if word4 in i:
+                    l4 = count
+                    s1 = s[l3:l4]
+                    del s[l3 - 3:l4 - 4]
+
+                    count2 = 0
+                    for i1 in s:
+                        if i1.__contains__("Report Summary") == 0 and i1.__contains__(
+                                "<br /><a class=\"awr\" href=\"#top\">Back to Top</a><hr /><p />") == 0:
+                            fh1.write(i1)
+                        count2 += 1
+                count += 1
+        count3 += 1
+
+    print("Files Scrubbed Successfully")
+    time.sleep(4)
+except:
+
+    print("Files not scrubbed")
+    time.sleep(5)
