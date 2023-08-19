@@ -1,3 +1,29 @@
+Step 1: Gather User Input
+
+The script begins by asking the user for their username, password, environment name, and the date range for the Kibana reports.
+Step 2: Process Reports Function
+
+A function called process_reports is defined. This function takes a line of text as input and performs replacements for placeholders like username, Password, tenant, and date formats with the user's inputs.
+The date format replacements are assumed to be in a specific format (e.g., '2021-\d*-\d+[A-Z]\d*:\d*:\d*.\d*[A-Z]').
+Step 3: Process and Generate Script
+
+The script opens "kibana3.txt" for reading and "kibanaa.sh" for writing.
+It reads each line from "kibana3.txt", processes it using the process_reports function, and writes the processed line to "kibanaa.sh".
+Step 4: Execute Kibana Script
+
+The subprocess module is used to execute the shell command sh C:\\KibanaReports\\kibanaa.sh, which is intended to run the generated "kibanaa.sh" script.
+Step 5: Optional Custom Script
+
+The script creates content for an optional custom script (custom_script_content), but the exact content is not provided in the snippet.
+The content is written to "C:/KibanaReports/myfile.sh" for use in later steps.
+Step 6: Execute Custom Script
+
+Another subprocess call is made to execute the shell command sh C:/KibanaReports/myfile.sh, which is intended to run the custom script generated in the previous step.
+Step 7: Clean Up
+
+The script uses the os.remove function to delete the temporary files "kibanaa.sh" and "myfile.sh" that were created during the process.
+Please note that while this explanation provides a high-level overview of the code's steps, certain details and specific content (such as the custom script content) are not fully defined in the original snippet. Also, this code should be customized, thoroughly tested, and validated for your specific environment and use case before deploying it in a production setting.
+
 #!/usr/bin/env python3
 
 import subprocess as sp
