@@ -50,7 +50,7 @@ os.remove("C:\\KibanaReports\\myfile.sh")
 
 --Read_me--
 
-Date_input_Format = 2023-07-28 11:15:00
+Date_input_Format = 2021-07-28 11:15:00
 
 Step 1: Gather User Input
 
