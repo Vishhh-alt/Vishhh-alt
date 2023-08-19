@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+
+import subprocess as sp
+
+# Gather user input
+username = input("Username: ")
+password = input("Password: ")
+environment = input("Environment name: ")
+from_date = input("From date: ")
+to_date = input("To date: ")
+
+# Process Kibana reports
+def process_reports(line):
+    placeholders = {
+        'username': username,
+        'Password': password,
+        'tenant': environment,
+    }
+    for placeholder, value in placeholders.items():
+        line = line.replace(placeholder, value)
+    line = line.replace('2021-\d*-\d+[A-Z]\d*:\d*:\d*.\d*[A-Z]', from_date, 1)
+    line = line.replace('2021-\d*-\d+[A-Z]\d*:\d*:\d*.\d*[A-Z]', to_date, 1)
+    return line
+
+# Process kibana3.txt and generate kibanaa.sh
+with open("C:\\KibanaReports\\kibana3.txt", "r") as input_file, \
+        open("C:\\KibanaReports\\kibanaa.sh", "w") as output_file:
+    for line in input_file:
+        processed_line = process_reports(line)
+        output_file.write(processed_line)
+
+# Execute kibanaa.sh
+sp.call(['sh', 'C:\\KibanaReports\\kibanaa.sh'])
+
+# Optional: Generate and execute additional custom script
+custom_script_content = """
+# Insert your custom script content here
+"""
+
+with open("C:/KibanaReports/myfile.sh", "w") as custom_script_file:
+    custom_script_file.write(custom_script_content)
+
+sp.call(['sh', 'C:/KibanaReports/myfile.sh'])
+
+# Clean up
+import os
+os.remove("C:\\KibanaReports\\kibanaa.sh")
+os.remove("C:\\KibanaReports\\myfile.sh")
