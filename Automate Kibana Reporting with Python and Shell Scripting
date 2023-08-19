@@ -49,6 +49,9 @@ os.remove("C:\\KibanaReports\\myfile.sh")
 
 
 --Read_me--
+
+Date_input_Format = 2023-07-28 11:15:00
+
 Step 1: Gather User Input
 
 The script begins by asking the user for their username, password, environment name, and the date range for the Kibana reports.
